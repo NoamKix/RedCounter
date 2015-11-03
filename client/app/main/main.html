@@ -1,0 +1,15 @@
+<div class="clock"></div>
+<div class="teams">
+    <div class="team" ng-repeat="team in namesAndBugs | orderBy:'bugs'">
+        <div class="badge">
+            <div class="server">
+                {{team.teamName}} {{team.bugs}}
+            </div>
+        </div>
+        <div class="photos" ng-style="{'height':400*team.bugs/totalBugs,'width':400*team.bugs/totalBugs}">
+            <div class="avatar-container" ng-repeat="name in team.names">
+                <img class="avatar" ng-show="selectedImage[team.teamName]==$index" ng-src="{{'/assets/images/avatars/' + name + '.jpg'}}">
+            </div>
+        </div>
+    </div>
+</div>
