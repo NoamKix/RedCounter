@@ -12,7 +12,7 @@ angular.module('redCounterExpressApp')
         $scope.selectedImage = {};
 
         function getUserCount() {
-            $http.get('http://10.0.0.50:3000/usersCount').then(function successCallback(res) {
+            $http.get('http://redkix-staging-clientapi.elasticbeanstalk.com/usersCount').then(function successCallback(res) {
                 $scope.totalCount = (res.data && res.data.totalCount) ? res.data.totalCount : '88';
             }, function errorCallback(res) {
                 $scope.totalCount = 99;
@@ -63,7 +63,7 @@ angular.module('redCounterExpressApp')
                     $scope.selectedImage[teamName] = 0;
                 }
             });
-        }, 2000);
+        }, 3000);
         getBugsCount();
         var clock = $('.clock').FlipClock(0, {
             clockFace: 'Counter'
