@@ -13,7 +13,8 @@
     "angular-ui-router": "~0.2.15",
     "flipclock": "~0.7.7",
     "howler.js": "howler#~1.1.28",
-    "angular-animate": "~1.4.7"
+    "angular-animate": "~1.4.7",
+    "jira-connector": "~1.9.0"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

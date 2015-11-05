@@ -1,4 +1,7 @@
 <div class="clock"></div>
+<!-- <div style="
+    flex-grow: 1;
+"></div> -->
 <div class="teams">
     <div class="team" ng-repeat="team in namesAndBugs | orderBy:'bugs'">
         <div class="badge">
@@ -8,7 +11,8 @@
         </div>
         <div class="photos" ng-style="{'height':(150*team.bugs/totalBugs)+250,'width':(150*team.bugs/totalBugs)+250}">
             <div class="avatar-container" ng-repeat="name in team.names">
-                <img class="avatar" ng-show="selectedImage[team.teamName]==$index" ng-src="{{'/assets/images/avatars/' + name + '.jpg'}}">
+                <div class="avatar" ng-show="selectedImage[team.teamName]==$index" ng-style="{'background': 'url(/assets/images/avatars/' + name + '.jpg)'}">
+                </div>
             </div>
         </div>
     </div>
