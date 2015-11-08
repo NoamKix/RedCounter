@@ -98,12 +98,15 @@ angular.module('redCounterExpressApp')
 
         $interval(function() {
             getUserCount();
-        }, 60000, true);
+        }, 10000);
+        $interval(function() {
+            getBugsCount();
+        }, 120000);
         $scope.$watch('totalCount', function(newValue, oldValue) {
             clock.setValue(newValue);
-            if (newValue % 10 === 0) {
+            if (newValue % 10 === 0 && newValue > oldValue) {
                 DecaSound.play();
-            } else {
+            } else if (newValue > oldValue) {
                 singleSound.play();
             }
         });
