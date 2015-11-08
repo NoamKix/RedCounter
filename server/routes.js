@@ -48,6 +48,30 @@ module.exports = function(app) {
             });
 
         });
+
+    app.route('/bugs-qa')
+        .get(function(req, res) {
+            var jira = new JiraClient({
+                host: 'redkix.atlassian.net',
+                basic_auth: {
+                    base64: 'bm9hbW46TWx0QDE5ODc'
+                }
+            });
+            var response;
+            jira.search.search({
+                jql: 'status in ("resolved")',
+                fields: ['components']
+            }, function(error, issue) {
+                var output = {};
+                console.log('error', error);
+                console.log('issues', issue);
+                output = {
+                    'qa-bugs': issue.total
+                };
+                res.send(output);
+            });
+
+        });
     // All other routes should redirect to the index.html
     app.route('/*')
         .get(function(req, res) {

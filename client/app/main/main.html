@@ -9,7 +9,7 @@
                 {{team.teamName}} {{team.bugs}}
             </div>
         </div>
-        <div class="photos" ng-style="{'height':(150*team.bugs/totalBugs)+250,'width':(150*team.bugs/totalBugs)+250}">
+        <div class="photos" ng-style="{'height':(290*team.bugs/totalBugs)+150,'width':(290*team.bugs/totalBugs)+150}">
             <div class="avatar-container" ng-repeat="name in team.names">
                 <div class="avatar" ng-show="selectedImage[team.teamName]==$index" ng-style="{'background': 'url(/assets/images/avatars/' + name + '.jpg)'}">
                 </div>

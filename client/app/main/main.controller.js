@@ -12,7 +12,7 @@ angular.module('redCounterExpressApp')
         $scope.selectedImage = {};
 
         function getUserCount() {
-            $http.get('http://redkix-staging-clientapi.elasticbeanstalk.com/usersCount').then(function successCallback(res) {
+            $http.get('http://redkix-production-clientapi.elasticbeanstalk.com/usersCount').then(function successCallback(res) {
                 $scope.totalCount = (res.data && res.data.totalCount) ? res.data.totalCount : '88';
             }, function errorCallback(res) {
                 $scope.totalCount = 99;
@@ -27,6 +27,15 @@ angular.module('redCounterExpressApp')
                     $scope.totalBugs += team.bugs;
                     $scope.avatarNames[teamName].bugs = team.bugs;
                 });
+                $scope.namesAndBugs = _.toArray($scope.avatarNames);
+            }, function errorCallback(res) {
+                $scope.bugs = res;
+            });
+
+            $http.get('bugs-qa').then(function successCallback(res) {
+                $scope.totalBugs += res.data['qa-bugs'];
+                $scope.avatarNames['qa'].bugs = res.data['qa-bugs'];
+
                 $scope.namesAndBugs = _.toArray($scope.avatarNames);
             }, function errorCallback(res) {
                 $scope.bugs = res;
@@ -47,6 +56,16 @@ angular.module('redCounterExpressApp')
             ios: {
                 teamName: 'ios',
                 names: ['gad', 'danny', 'ilya'],
+                bugs: 0
+            },
+            android: {
+                teamName: 'android',
+                names: ['guy-talmor'],
+                bugs: 0
+            },
+            qa: {
+                teamName: 'qa',
+                names: ['gil', 'tally'],
                 bugs: 0
             }
         };
